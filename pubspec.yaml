@@ -13,6 +13,8 @@ dependencies:
 
 
   cupertino_icons: ^1.0.6
+  lottie: ^3.1.0
+
 
 
 dev_dependencies:
@@ -25,5 +27,6 @@ flutter:
 
   uses-material-design: true
 
-
-
+  assets:
+    - assets/json_model/
+    - assets/animation/
