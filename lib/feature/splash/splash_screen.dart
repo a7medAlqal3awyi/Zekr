@@ -13,12 +13,12 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
-  AnimationController? _controller;
+   AnimationController? _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+    _controller =  AnimationController(
       duration: const Duration(seconds: (6)),
       vsync: this,
     );
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body:  Column(
         children: [
           Lottie.asset(
             "assets/animation/quran_Animation.json",
