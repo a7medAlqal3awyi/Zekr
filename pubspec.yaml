@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   lottie: ^3.1.0
+  flutter_screenutil: ^5.9.0
 
 
 
@@ -30,3 +31,9 @@ flutter:
   assets:
     - assets/json_model/
     - assets/animation/
+    - assets/images/
+
+  fonts:
+    - family: cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
