@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
       child: MaterialApp(
         title: 'Flutter Demo',
-        initialRoute: Routes.splash,
+        initialRoute: Routes.home,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRouter.onGenerateRoute,
       ),
