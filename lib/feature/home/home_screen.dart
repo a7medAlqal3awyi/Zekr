@@ -1,15 +1,31 @@
+import 'package:azkar/feature/home/widget/carousel.dart';
+import 'package:azkar/feature/home/widget/home_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../core/themeing/text_styles.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<String> fadlElzekr = [
+      "فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ",
+      "وَاذْكُرُوا اللَّهَ فِي أَيَّامٍ مَعْدُودَاتٍ",
+      "وَاذْكُرْ رَبَّكَ كَثِيرًا وَسَبِّحْ بِالْعَشِيِّ وَالْإِبْكَارِ",
+      "فَإِذَا قَضَيْتُمُ الصَّلَاةَ فَاذْكُرُوا اللَّهَ قِيَامًا وَقُعُودًا وَعَلَى جُنُوبِكُمْ",
+      "وَاذْكُرُوا اللَّهَ كَثِيرًا",
+      " سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى",
+      "فَسُبْحَانَ اللَّهِ حِينَ تُمْسُونَ وَحِينَ تُصْبِحُونَ",
+      "وَمِنْ آنَاءِ اللَّيْلِ فَسَبِّحْ وَأَطْرَافَ النَّهَارِ لَعَلَّكَ تَرْضَى",
+      "وَسَبِّحْ بِحَمْدِ رَبِّكَ قَبْلَ طُلُوعِ الشَّمْسِ",
+      "وَاذْكُرْ رَبَّكَ إِذَا نَسِيتَ",
+      "لَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"
+    ];
     List<String> titles = [
       "أذكار الصباح",
       "أذكار المساء",
-      "أذكار بعد السلام من الصلاة المفروضة",
+      "أذكار بعد الصلاة",
       "تسابيح",
       "أذكار النوم",
       "أذكار الاستيقاظ",
@@ -26,38 +42,51 @@ class HomeScreen extends StatelessWidget {
       "assets/images/quraan.jpg",
       "assets/images/do3aaa.jpg",
     ];
+    List<String> endProfiles = [
+      "أذكار الصباح",
+      "أذكار المساء",
+      "أذكار بعد الصلاة",
+      "تسابيح",
+      "أذكار النوم",
+      "أذكار الاستيقاظ",
+      "أدعية قرآنية",
+      "أدعية الأنبياء",
+    ];
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: titles.length,
-            itemBuilder: (context, index) => GestureDetector(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 8.w),
-                child: Container(
-                  height: 140.h,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(backgrounds[index]),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(20.r),
-                  ),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
-                  child: Text(
-                    textAlign: TextAlign.right,
-                    titles[index],
-                    style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Cairo",
-                        color: Colors.white),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(height: 20.h),
+              MyCarouselWidget(fadlElzekr: fadlElzekr),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
+                child: Text(
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
+                  "قائمة الاذكار",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontFamily: TextStyles.fontFamily,
                   ),
                 ),
               ),
-            ),
+              Center(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: titles.length,
+                  itemBuilder: (context, index) => HomeItem(
+                      index: index,
+                      endProfiles: endProfiles,
+                      backgrounds: backgrounds,
+                      titles: titles),
+                ),
+              ),
+            ],
           ),
         ),
       ),
