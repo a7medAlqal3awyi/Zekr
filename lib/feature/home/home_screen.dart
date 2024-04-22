@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> fadlElzekr = [
+      "وَلَذِكْرُ اللَّهِ أَكْبَرُ",
       "فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ",
       "وَاذْكُرُوا اللَّهَ فِي أَيَّامٍ مَعْدُودَاتٍ",
       "وَاذْكُرْ رَبَّكَ كَثِيرًا وَسَبِّحْ بِالْعَشِيِّ وَالْإِبْكَارِ",
@@ -26,6 +27,7 @@ class HomeScreen extends StatelessWidget {
       "أذكار الصباح",
       "أذكار المساء",
       "أذكار بعد الصلاة",
+      "أدعية النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
       "تسابيح",
       "أذكار النوم",
       "أذكار الاستيقاظ",
@@ -36,6 +38,7 @@ class HomeScreen extends StatelessWidget {
       "assets/images/sun_shine.jpg",
       "assets/images/sun_set.jpg",
       "assets/images/azkar.jpg",
+      "assets/images/best_do3aa.png",
       "assets/images/tasbi7.jpg",
       "assets/images/sleap.jpg",
       "assets/images/wakeup.jpg",
@@ -46,6 +49,7 @@ class HomeScreen extends StatelessWidget {
       "أذكار الصباح",
       "أذكار المساء",
       "أذكار بعد الصلاة",
+      "أدعية النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
       "تسابيح",
       "أذكار النوم",
       "أذكار الاستيقاظ",
@@ -67,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   "قائمة الاذكار",
                   style: TextStyle(
-                    fontSize: 18.sp,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w600,
                     color: Colors.black,
                     fontFamily: TextStyles.fontFamily,

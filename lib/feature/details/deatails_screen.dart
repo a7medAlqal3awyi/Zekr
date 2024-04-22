@@ -59,7 +59,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           centerTitle: true,
           title: Text(
             widget.endPoint,
-            style: TextStyles.font20BlackW500
+            style: TextStyles.font20BlackW600
                 .copyWith(color: Colors.deepPurpleAccent.shade200),
           )),
       body: Card(
@@ -94,20 +94,29 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               shareText(
                                   jsonData[widget.endPoint][index]['content']);
                             },
-                            icon: const Icon(
+                            icon:  Icon(
                               Icons.share,
                               color: Colors.white,
-                              size: 18,
+                              size: 24.w,
                             ),
                           ),
                         ),
                         jsonData[widget.endPoint][index]['count'] != ""
                             ? CircleAvatar(
+                          radius: 20,
                                 backgroundColor:
                                     Colors.deepPurpleAccent.shade200,
-                                child: Text(
-                                  jsonData[widget.endPoint][index]['count'],
-                                  style: TextStyles.font16White,
+                                child: Flex(
+                                  mainAxisAlignment:  MainAxisAlignment.center,
+                                  direction: Axis.vertical,
+                                  children: [
+                                    Text(
+                                      jsonData[widget.endPoint][index]['count'],
+                                      style: TextStyles
+                                          .font20BlackW600
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                  ],
                                 ),
                               )
                             : const SizedBox()
@@ -121,17 +130,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     children: [
                       Text("${jsonData[widget.endPoint][index]['content']}",
                           textAlign: TextAlign.right,
-                          style: TextStyles.font20BlackW500),
+                          style: TextStyles.font20BlackW600),
                       jsonData[widget.endPoint][index]['description'] != ""
                           ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 SizedBox(height: 7.h),
                                 Text(
                                     "${jsonData[widget.endPoint][index]['description']}",
                                     textAlign: TextAlign.right,
                                     style:
-                                        TextStyles.font16deepPurpleAccentW500),
+                                        TextStyles.font18deepPurpleAccentW400),
                               ],
                             )
                           : const SizedBox(),

@@ -40,7 +40,7 @@ class HomeItem extends StatelessWidget {
           child: Text(
             textAlign: TextAlign.right,
             titles[index],
-            style: TextStyles.font18WhiteW600,
+            style: TextStyles.font18WhiteW600
           ),
         ),
       ),
