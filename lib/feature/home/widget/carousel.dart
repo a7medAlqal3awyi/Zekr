@@ -40,7 +40,9 @@ class MyCarouselWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       textDirection: TextDirection.rtl,
                       i,
-                      style:TextStyles.font20BlackW500
+                      style:TextStyles.font20BlackW600.copyWith(
+                        fontSize: 19.sp
+                      )
                     ),
                   )),
             );
