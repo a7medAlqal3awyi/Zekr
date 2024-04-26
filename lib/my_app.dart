@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
 
       child: MaterialApp(
-        title: 'Flutter Demo',
-        initialRoute: Routes.home,
+        title: 'Azkar',
+        initialRoute: Routes.splash,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRouter.onGenerateRoute,
       ),
