@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:azkar/feature/home/widget/carousel.dart';
 import 'package:azkar/feature/home/widget/home_item.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/themeing/text_styles.dart';
@@ -56,41 +59,74 @@ class HomeScreen extends StatelessWidget {
       "أدعية قرآنية",
       "أدعية الأنبياء",
     ];
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              SizedBox(height: 20.h),
-              MyCarouselWidget(fadlElzekr: fadlElzekr),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (bool shouldPop) async {
+        final shouldExit = await showDialog(
+          context: context,
+          builder: (BuildContext dialogContext) => CupertinoAlertDialog(
+            content: Text(
+              'هل تريد الخروج من التطبيق؟',
+              style: TextStyles.font20BlackW600.copyWith(fontSize: 18.sp),
+            ),
+
+            actions: [
+              CupertinoDialogAction(
+                onPressed: () {
+                  Navigator.of(dialogContext).pop(false);
+                },
                 child: Text(
-                  textAlign: TextAlign.center,
-                  textDirection: TextDirection.rtl,
-                  "قائمة الاذكار",
-                  style: TextStyle(
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                    fontFamily: TextStyles.fontFamily,
-                  ),
+                  'لا',
+                  style: TextStyles.font18deepPurpleAccentW400,
                 ),
               ),
-              Center(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: titles.length,
-                  itemBuilder: (context, index) => HomeItem(
-                      index: index,
-                      endProfiles: endProfiles,
-                      backgrounds: backgrounds,
-                      titles: titles),
+              CupertinoDialogAction(
+                onPressed: () {
+                  exit(0); // Exit the app with code 0
+                },
+                child: Text(
+                  'نعم',
+                  style: TextStyles.font18deepPurpleAccentW400,
                 ),
               ),
             ],
+          ),
+        );
+
+        return shouldExit ?? false;
+      },
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(height: 20.h),
+                MyCarouselWidget(fadlElzekr: fadlElzekr),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    textDirection: TextDirection.rtl,
+                    "قائمة الاذكار",
+                    style: TextStyles.font20BlackW600.copyWith(fontSize: 22.sp)
+                  ),
+                ),
+                Center(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: titles.length,
+                    itemBuilder: (context, index) => HomeItem(
+                        index: index,
+                        endProfiles: endProfiles,
+                        backgrounds: backgrounds,
+                        titles: titles),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
